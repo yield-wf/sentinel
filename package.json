@@ -1,0 +1,41 @@
+{
+  "name": "nestjs-sentinel",
+  "version": "1.0.0",
+  "description": "Nestjs data validation",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register src/test/**/*.spec.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizgamabh/nestjs-sentinel.git"
+  },
+  "keywords": [
+    "sentinel",
+    "validator",
+    "guard",
+    "form",
+    "validation",
+    "fields",
+    "check"
+  ],
+  "author": "Luiz Gustavo Freire Gama",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luizgamabh/nestjs-sentinel/issues"
+  },
+  "homepage": "https://github.com/luizgamabh/nestjs-sentinel#readme",
+  "dependencies": {
+    "@nestjs/common": "^6.10.1",
+    "rxjs": "^6.5.3",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.11",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.7.2",
+    "ts-node": "^8.5.2",
+    "mocha": "^6.2.2",
+    "chai": "^4.2.0"
+  }
+}
