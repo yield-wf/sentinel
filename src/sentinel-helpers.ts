@@ -1,4 +1,11 @@
+import { ISentinelValidatorComposer } from './interfaces/sentinel-composer';
+import { ISentinelValidatorFn } from './interfaces/sentinel-validator-fn';
+
+
 export class SentinelHelpers {
+  public errors: any[] = [];
+  public valid: boolean = false;
+
   protected static _castFn(fn, defaultValue = undefined) {
     return ~Object.prototype.toString.call(fn).indexOf("Function")
       ? fn
@@ -35,6 +42,50 @@ export class SentinelHelpers {
   }
 
   protected static _toString(value: any): string {
-      return SentinelHelpers._hasIn(value, 'toString') ? value.toString() : ''
+    return SentinelHelpers._hasIn(value, "toString") ? value.toString() : "";
+  }
+
+  constructor(data: any, ...validators: (ISentinelValidatorComposer | ISentinelValidatorFn | any)[]) {
+    const validatorsArr = Array.prototype.concat.apply([], validators);
+    const [first = {}] = validatorsArr;
+    if (Array.isArray(first.all)) {
+      let failed = false;
+      first.all.forEach(validator => {
+        if (failed) return;
+        // validator
+        this.valid = SentinelHelpers._castFn(validator, {
+          validate: () => false
+        })().validate(data);
+        if (!this.valid) failed = true;
+      });
+    } else if (Array.isArray(first.any)) {
+      let validFound = false;
+      first.any.forEach(validator => {
+        if (validFound) return;
+        this.valid = SentinelHelpers._castFn(validator, {
+          validate: () => false
+        })().validate(data);
+        validFound = this.valid;
+      });
+    } else if (Array.isArray(validatorsArr)) {
+      let failed = false;
+      validatorsArr.forEach(validator => {
+        if (failed) return;
+        this.valid = SentinelHelpers._castFn(validator, {
+          validate: () => false
+        })().validate(data);
+        if (!this.valid) failed = true;
+      });
+    } else {
+      this.valid = false;
+    }
+  }
+
+  isValid() {
+    return this.valid;
+  }
+
+  isInvalid() {
+    return !this.valid;
   }
 }

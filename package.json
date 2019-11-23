@@ -2,9 +2,12 @@
   "name": "nestjs-sentinel",
   "version": "1.0.0",
   "description": "Nestjs data validation",
-  "main": "index.js",
+  "main": "dist/index",
+  "types": "dist/index",
   "scripts": {
-    "test": "mocha -r ts-node/register src/test/**/*.spec.ts"
+    "test": "mocha -r ts-node/register --project ./tsconfig.json src/test/**/*.spec.ts",
+    "build": "npm run test && rimraf dist && tsc",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,22 +23,22 @@
     "check"
   ],
   "author": "Luiz Gustavo Freire Gama",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/luizgamabh/nestjs-sentinel/issues"
   },
   "homepage": "https://github.com/luizgamabh/nestjs-sentinel#readme",
   "dependencies": {
     "@nestjs/common": "^6.10.1",
-    "rxjs": "^6.5.3",
     "moment": "^2.24.0"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.11",
-    "rimraf": "^3.0.0",
-    "typescript": "^3.7.2",
-    "ts-node": "^8.5.2",
+    "chai": "^4.2.0",
     "mocha": "^6.2.2",
-    "chai": "^4.2.0"
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
   }
 }

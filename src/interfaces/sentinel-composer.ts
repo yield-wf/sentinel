@@ -1,6 +1,6 @@
 import { ISentinelValidatorFn } from "./sentinel-validator-fn";
 
-export interface ISentinelComposer {
-  any: ISentinelValidatorFn[];
-  all: ISentinelValidatorFn[];
+export interface ISentinelValidatorComposer {
+  any: null | ISentinelValidatorFn[];
+  all: null | ISentinelValidatorFn[];
 }
