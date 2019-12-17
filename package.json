@@ -5,9 +5,7 @@
   "main": "dist/index",
   "types": "dist/index",
   "scripts": {
-    "test": "mocha -r ts-node/register --project ./tsconfig.json src/test/**/*.spec.ts",
-    "build": "npm run test && rimraf dist && tsc",
-    "prepublish": "npm run build"
+    "test": "mocha -r ts-node/register --project ./tsconfig.json src/test/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
