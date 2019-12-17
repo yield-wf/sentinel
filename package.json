@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-sentinel",
+  "name": "sentinel",
   "version": "1.0.0",
-  "description": "Nestjs data validation",
+  "description": "Sentinel typescript validation",
   "main": "dist/index",
   "types": "dist/index",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luizgamabh/nestjs-sentinel.git"
+    "url": "git+https://github.com/yield.wf/sentinel.git"
   },
   "keywords": [
     "sentinel",
@@ -25,11 +25,10 @@
   "author": "Luiz Gustavo Freire Gama",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/luizgamabh/nestjs-sentinel/issues"
+    "url": "https://github.com/yield.wf/sentinel/issues"
   },
-  "homepage": "https://github.com/luizgamabh/nestjs-sentinel#readme",
+  "homepage": "https://github.com/yield.wf/sentinel#readme",
   "dependencies": {
-    "@nestjs/common": "^6.10.1",
     "moment": "^2.24.0"
   },
   "devDependencies": {

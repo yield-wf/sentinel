@@ -1,6 +1,3 @@
-import {
-    Injectable
-} from '@nestjs/common';
 import moment from "moment";
 import {
     SentinelHelpers
@@ -344,12 +341,5 @@ export class Sentinel extends SentinelHelpers {
                 );
             }
         });
-    }
-}
-
-@Injectable()
-export class SentinelService {
-    constructor() {
-        return Sentinel
     }
 }
