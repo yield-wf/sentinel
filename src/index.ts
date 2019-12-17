@@ -1,3 +1,5 @@
-import { SentinelModule } from './sentinel.module';
-import { SentinelService } from './sentinel'
-export { SentinelModule, SentinelService };
+// TODO: Add NestJS adapter
+// import { SentinelModule } from './sentinel.module';
+import { Sentinel } from './sentinel'
+// export { SentinelModule, Sentinel };
+export { Sentinel };

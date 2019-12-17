@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { Sentinel } from '../sentinel';
+import { Sentinel } from '../index';
 import { ISentinelValidator } from '../interfaces/sentinel-validator';
 
 describe('Validate a number', () => {
