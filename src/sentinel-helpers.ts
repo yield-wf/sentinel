@@ -45,6 +45,19 @@ export class SentinelHelpers {
     return SentinelHelpers._hasIn(value, "toString") ? value.toString() : "";
   }
 
+  protected static _isEmpty(value: any): boolean {
+    const types = {
+      String: v => v.trim().lenght === 0,
+      Array: v => v.length === 0,
+      Object: v => Object.keys(v).length === 0,
+      Number: () => false,
+      Null: () => true,
+      Undefined: () => true
+    }
+    const type = Object.prototype.toString.call(value).replace(/^\[object\s(\w+)\]$/ig, "$1");
+    return SentinelHelpers._hasIn(types, type) ? types[type](value) : false
+  }
+
   constructor(data: any, ...validators: (ISentinelValidatorComposer | ISentinelValidatorFn | any)[]) {
     const validatorsArr = Array.prototype.concat.apply([], validators);
     const [first = {}] = validatorsArr;
