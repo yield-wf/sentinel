@@ -342,4 +342,36 @@ export class Sentinel extends SentinelHelpers {
             }
         });
     }
+
+    /**
+     * Is valid brazilian phone?
+     * @param {boolean} [allowEmpty] - If true, empty values will pass in validation
+     */
+    public static isBRPhoneValid < ISentinelValidator > (allowEmpty: boolean = false): ISentinelValidatorDelegate {
+        return (): ISentinelValidatorFn => ({
+            validate(phone: any): boolean {
+                let phoneStr = Sentinel._toString(phone).replace(/\D*/gi, '')
+                if (allowEmpty && Sentinel._isEmpty(phoneStr)) return true
+                return /(^(?:\D*\+?55)?(?:\D*0)?(?:\D*(?:1[257]|2[135]|31|4[13])?)?((?:\D*[1-9]){2})(\D*9?(?:\D*\d){4})(\D*\d{4})$)/i.test(
+                    phoneStr
+                )
+            }
+        })
+    }
+
+    /**
+     * Is valid brazilian cell phone?
+     * @param {boolean} [allowEmpty] - If true, empty values will pass in validation
+     */
+    public static isBRCellPhoneValid < ISentinelValidator > (allowEmpty: boolean = false): ISentinelValidatorDelegate {
+        return (): ISentinelValidatorFn => ({
+            validate(phone: any): boolean {
+                let phoneStr = Sentinel._toString(phone).replace(/\D*/gi, '')
+                if (allowEmpty && Sentinel._isEmpty(phoneStr)) return true
+                return /(^(?:\D*\+?55)?(?:\D*0)?(?:\D*(?:1[257]|2[135]|31|4[13])?)?((?:\D*[1-9]){2})(\D*9(?:\D*\d){4}|[6-9](?:\D*\d){3})(\D*\d{4})$)/i.test(
+                    phoneStr
+                )
+            }
+        })
+    }
 }
