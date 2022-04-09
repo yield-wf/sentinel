@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/yield.wf/sentinel#readme",
   "dependencies": {
-    "moment": "^2.24.0"
+    "moment": "^2.29.2"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
